@@ -47,8 +47,6 @@ python -m scripts.run_canvas --filter savgol --win  nine  --poly 3
 
 # Tiny constant-velocity Kalman (tune noise terms later if you like)
 python -m scripts.run_canvas --filter kalman
-
-# tip for kalman: For slow deliberate motion, try --fc 3. For faster strokes, try --fc 6–8.
 ```
 
 ### 3. How to use the UI
@@ -57,3 +55,35 @@ Bottom-left: X-coordinate over time (raw vs. filtered).
 Bottom-right: X-axis spectrum; tremor typically shows a bump ~6–12 Hz.
 Window title shows estimated sampling rate fs≈… Hz and the active filter.
  
+## Tweaking parameters
+Each filter comes with adjustable parameters to control smoothness, responsiveness, and tremor suppression strength.
+Here are some tuning tips:
+### Cutoff frequency (--fc)
+- Lower values → stronger smoothing (removes more tremor, but laggy)
+- Higher values → more responsive (less smoothing, keeps tremor)
+### Filter order (--order)
+- Higher = sharper cutoff (stronger but may overshoot/oscillate)
+### One-Euro filter (--oneeuro_min, --oneeuro_beta)
+- --oneeuro_min: baseline cutoff
+- --oneeuro_beta: how much cutoff adapts with speed (higher = more responsive strokes)
+### Moving Average (--ma)
+- Window length in samples (larger = smoother, slower response)
+### Exponential Moving Average (--alpha)
+- α close to 1 → fast reaction, little smoothing
+- α small (e.g., 0.1) → heavy smoothing
+### Savitzky–Golay (--win, --poly)
+- --win: odd number window size
+- --poly: polynomial order (< window size)
+### Kalman filter (--filter kalman)
+- Works well for slow, deliberate motion
+- Try --fc 3 for steady drawing, --fc 6–8 for faster strokes
+
+## Notes
+Filters can be combined or extended; check htfilter/filters.py to implement your own.
+
+## Suggested Experiments
+Compare Butterworth vs. Bessel at the same cutoff.
+Draw circles with Moving Average using different window sizes (--ma 5, --ma 15).
+Try Kalman filter on both slow and fast motion.
+Test One-Euro filter with different --oneeuro_beta values and see how responsiveness changes.
+Explore tremor frequency peaks in the spectrum view to tune notch filters.
