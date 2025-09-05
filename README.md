@@ -82,8 +82,8 @@ Here are some tuning tips:
 Filters can be combined or extended; check htfilter/filters.py to implement your own.
 
 ## Suggested Experiments
-Compare Butterworth vs. Bessel at the same cutoff.
-Draw circles with Moving Average using different window sizes (--ma 5, --ma 15).
-Try Kalman filter on both slow and fast motion.
-Test One-Euro filter with different --oneeuro_beta values and see how responsiveness changes.
-Explore tremor frequency peaks in the spectrum view to tune notch filters.
+- Compare Butterworth vs. Bessel at the same cutoff.
+- Draw circles with Moving Average using different window sizes (--ma 5, --ma 15).
+- Try Kalman filter on both slow and fast motion.
+- Test One-Euro filter with different --oneeuro_beta values and see how responsiveness changes.
+- Explore tremor frequency peaks in the spectrum view to tune notch filters.
