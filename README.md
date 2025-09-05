@@ -1,4 +1,4 @@
-# Hand-Tremor-Filtering
+# Hand Tremor Filtering
 
 this project was made to study and experiement with different filter techniques to reduce unwanted movement and ensure a uniform and controlled path.
 
