@@ -17,12 +17,12 @@ hand-tremor-filtering/
    ├─ __init__.py
    └─ run_canvas.py
 ```
-##getting started
-###1. install dependencies
+## getting started
+### 1. install dependencies
 ```bash
 pip install -r requirements.txt
 ```
-###2. using the filters
+### 2. using the filters
 ```bash
 # Smooth and stable; good general demo
 python -m scripts.run_canvas --filter butter --fc 5 --order 2
@@ -51,7 +51,7 @@ python -m scripts.run_canvas --filter kalman
 # tip for kalman: For slow deliberate motion, try --fc 3. For faster strokes, try --fc 6–8.
 ```
 
-###3. How to use the UI
+### 3. How to use the UI
 Top panel: your path. Thin line = raw; thicker line = filtered.
 Bottom-left: X-coordinate over time (raw vs. filtered).
 Bottom-right: X-axis spectrum; tremor typically shows a bump ~6–12 Hz.
